@@ -1,0 +1,61 @@
+name:                lispy-lang
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/Solonarv/lispy-lang#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Nicolas Stamm
+maintainer:          nstamm@gmx.de
+copyright:           2017 Nicolas Stamm
+category:            misc
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Language.Lispy
+                     , Language.Lispy.Syntax
+                     , Language.Lispy.Parser
+                     , Language.Lispy.Interpreter
+  build-depends:       base >= 4.7 && < 5
+                     , parsec
+                     , vector
+                     , text
+                     , mtl
+                     , containers
+  default-language:    Haskell2010
+
+executable lispyci
+  hs-source-dirs:      src
+  main-is:             Repl.hs
+  build-depends:       base
+                     , lispy-lang
+                     , parsec
+                     , vector
+                     , text
+                     , mtl
+                     , containers
+  default-language:    Haskell2010
+
+-- executable lispyc
+--   hs-source-dirs:      app
+--   main-is:             Main.hs
+--   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+--   build-depends:       base
+--                      , lispy-lang
+--   default-language:    Haskell2010
+
+test-suite lispy-lang-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , lispy-lang
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/Solonarv/lispy-lang
